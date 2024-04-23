@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>正则表达式和通配符 | CherryのHome</title>
+    <title>Darling❤ | CherryのHome</title>
     <meta name="author" content="Cherryblowing" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -150,14 +150,14 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1>正则表达式和通配符</h1>
+        <h1>Darling❤</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2024/4/20
+            2024/4/23
         </span>
         
         
@@ -169,7 +169,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Linux/" style="color: #00bcd4">Linux</a>
+                <a href="/tags/Life/" style="color: #ffa2c4">Life</a>
             </span>
             
         </span>
@@ -177,146 +177,23 @@
     </div>
     
     <div class="content" v-pre>
-        <ul>
-<li>通配符</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>通配符</th>
-<th>含义</th>
-<th>实例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>*</td>
-<td>匹配0或多个字符</td>
-<td>a*b a与b之间可以有任意长度的任意字符, 也可以一个也没有, 如aabcb, axyzb, a012b, ab</td>
-</tr>
-<tr>
-<td>？</td>
-<td>匹配任意<strong>一个</strong>字符</td>
-<td>a?b a与b之间必须也只能有一个字符, 可以是任意字符, 如aab, abb, acb, a0b</td>
-</tr>
-<tr>
-<td>[list]</td>
-<td>匹配list中的任意单一字符</td>
-<td>a[xyz]b  a与b之间必须也只能有一个字符, 但只能是 x 或 y 或 z, 如: axb, ayb, azb</td>
-</tr>
-<tr>
-<td>[!list]或将’!’改成’^’</td>
-<td>匹配 除list 中的任意单一字符</td>
-<td>a[!0-9]b a与b之间必须也只能有一个字符, 但不能是阿拉伯数字, 如axb, aab, a-b</td>
-</tr>
-<tr>
-<td>[c1-c2]</td>
-<td>匹配c1-c2中的任意单一字符</td>
-<td>a[0-9]b  0与9之间有且只有一个字符，如a0b,a1b。</td>
-</tr>
-<tr>
-<td>[!c1-c2]</td>
-<td>匹配不在c1-c2的任意字符</td>
-<td>a[!0-9]b 如acb adb</td>
-</tr>
-</tbody></table>
-<ul>
-<li>正则表达式</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>字符</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>^</td>
-<td>以什么开头</td>
-</tr>
-<tr>
-<td>$</td>
-<td>以什么结尾</td>
-</tr>
-<tr>
-<td>^$</td>
-<td>表示空行</td>
-</tr>
-<tr>
-<td>.</td>
-<td>任意单个字符    比如a.b ,即a和b直接有任意一个字符</td>
-</tr>
-<tr>
-<td>[]</td>
-<td>字符范围，如[a-z]</td>
-</tr>
-<tr>
-<td>\</td>
-<td>转义字符，恢复字符原来的含义^</td>
-</tr>
-<tr>
-<td>*</td>
-<td>前面的字符出现0次或多次，比如a*，可以匹配到123a,123aa,123aaa等字符</td>
-</tr>
-<tr>
-<td>.*</td>
-<td>任意字符出现了任意次</td>
-</tr>
-<tr>
-<td>[c1-c2]</td>
-<td>匹配c1-c2中的任意单一字符</td>
-</tr>
-<tr>
-<td>+</td>
-<td>匹配前一个字符1次或多次（注意与*区分开）</td>
-</tr>
-<tr>
-<td>[:&#x2F;]+</td>
-<td>匹配括号内的字符”:”或者”&#x2F;“ 1次或多次</td>
-</tr>
-<tr>
-<td>？</td>
-<td>匹配前1个字符0次或1次</td>
-</tr>
-<tr>
-<td>|</td>
-<td>或</td>
-</tr>
-<tr>
-<td>()   \n</td>
-<td>1个整体 abc123 —–&gt; (abc) (123)  —-&gt; \2\1       （ \2表示引用第二个小括号的内容，\1表示引用第一个小括号的内容）</td>
-</tr>
-<tr>
-<td>a{n,m}</td>
-<td>a这个字符最少出现n次，最多出现m次</td>
-</tr>
-<tr>
-<td>a{n,}</td>
-<td>a这个字符最少出现n次，最多不限</td>
-</tr>
-<tr>
-<td>a{,m}</td>
-<td>a这个字符最少出现0次，最多出现m次</td>
-</tr>
-</tbody></table>
-<ol>
-<li><p>如何表示0到9数字?</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[0-9]</span><br><span class="line">##或者</span><br><span class="line">[:digit:]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如何表示英文字母？</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[a-zA-Z]</span><br><span class="line"><span class="comment">##或者</span></span><br><span class="line">[:alpha:]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如何表示“13”头的手机号码？</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">13[0-9]&#123;9&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如何表示电子邮箱地址？</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[a-zA-Z0-9._]+@[A-Za-z0-9.]+\.[a-zA-Z]&#123;2,3&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>5.假设我们要搜索美国的社会安全号，格式是999-99-9999，对应的正则表达式</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[0-9]&#123;3&#125;\-[0-9]&#123;2&#125;\-[0-9]&#123;4&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果要查找一个文件中“a.txt”的所有邮箱</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -oE <span class="string">&#x27;[a-zA-Z0-9._]+@[A-Za-z0-9.]+\.[a-zA-Z]&#123;2,3&#125;&#x27;</span> a.txt</span><br></pre></td></tr></table></figure>
-
+        <p>![](C:\Users\明坤\Desktop\新建文件夹 (4)\00fea9b350237f741c37169020286a22.jpg)</p>
+<p>![](C:\Users\明坤\Desktop\新建文件夹 (4)\0f7e02f334190f4f61b532af1314cd55.jpg)</p>
+<p>![](C:\Users\明坤\Desktop\新建文件夹 (4)\3a715eb6eedd4116d457bcff18e09e53.jpg)</p>
+<p>![](C:\Users\明坤\Desktop\新建文件夹 (4)\7f426d6d238fbce21fd79637256f8964.jpg)</p>
+<p>![](C:\Users\明坤\Desktop\新建文件夹 (4)\37eafe511322d867304fa4ed61f97fc4.jpg)</p>
+<p>![](C:\Users\明坤\Desktop\新建文件夹 (4)\59cd0393d3fa20f9cfc557ff5def15d0.jpg)</p>
+<p>![](C:\Users\明坤\Desktop\新建文件夹 (4)\74eb65e7dbc3592c653da9f6007178e1.jpg)</p>
+<p>![](C:\Users\明坤\Desktop\新建文件夹 (4)\91e8b0e220e1d6636327ad591ad75150.jpg)</p>
+<p>![](C:\Users\明坤\Desktop\新建文件夹 (4)\317eba32c80d3ab8d17280328b8ee01b.jpg)</p>
+<p>![](C:\Users\明坤\Desktop\新建文件夹 (4)\9133276e698260a5c9cee4081c72daf0.jpg)</p>
+<p>![](C:\Users\明坤\Desktop\新建文件夹 (4)\765418845a875eff35ae68f6165f0b20.jpg)</p>
+<p>![](C:\Users\明坤\Desktop\新建文件夹 (4)\a2e6283f0e3ae4d072c00862f732df18.jpg)</p>
+<p>![](C:\Users\明坤\Desktop\新建文件夹 (4)\cccbcef0876bd210655db135d9991166.jpg)</p>
+<p>![](C:\Users\明坤\Desktop\新建文件夹 (4)\d19215a52c57a4a2408d609a23624d93.jpg)</p>
+<p>![](C:\Users\明坤\Desktop\新建文件夹 (4)\e9b3fafb63062afeb643006a989ddc47.jpg)</p>
+<p>![](C:\Users\明坤\Desktop\新建文件夹 (4)\e6679a77217e0983677b0596e4b21f06.jpg)</p>
+<p>![](C:\Users\明坤\Desktop\新建文件夹 (4)\f8797fd29e98e213401f420d1b708e4b.jpg)</p>
 
     </div>
     
