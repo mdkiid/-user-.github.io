@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>二叉树 | CherryのHome</title>
+    <title>哈夫曼的平均码长 | CherryのHome</title>
     <meta name="author" content="Cherryblowing" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -150,14 +150,14 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1>二叉树</h1>
+        <h1>哈夫曼的平均码长</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2024/4/28
+            2024/5/14
         </span>
         
         
@@ -169,7 +169,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #ffa2c4">数据结构</a>
+                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #00bcd4">数据结构</a>
             </span>
             
         </span>
@@ -177,19 +177,10 @@
     </div>
     
     <div class="content" v-pre>
-        <p>二叉树的前序、中序、后序、层次、线索、遍历</p>
-<p>#include &lt;stdio.h&gt;<br>#include &lt;stdlib.h&gt;<br>#include &lt;string.h&gt;<br>typedef struct BiNode{<br>    char data;<br>    struct BiNode<em>lchild,<em>rchild;<br>    int ltag,rtag;<br>}BINODE,<em>BiTree;<br>BINODE</em>pre&#x3D;NULL;<br>&#x2F;&#x2F;创建二叉树<br>void CreateBiTree(BiTree <em>t)<br>{<br>    char ch;<br>    ch&#x3D;getchar();<br>    if(ch&#x3D;&#x3D;’#’) <em>t&#x3D;NULL;<br>    else<br>    {<br>        <em>t&#x3D;(Bi</em>Tree)malloc(sizeof(BINODE));</em><br>        <em>(t)-&gt;data&#x3D;ch;<br>        (t)-&gt;ltag&#x3D;(t)-&gt;rtag&#x3D;0;<br>        CreateBiTree(&amp;(t)-&gt;lchild);</em><br>        CreateBiTree(&amp;(t)-&gt;rchild);<br>    }<br>}<br>&#x2F;&#x2F;先序遍历<br>void Pre(BiTree T)<br>{<br>    if(T)<br>    {<br>        printf(“%c”,T-&gt;data);<br>        Pre(T-&gt;lchild);<br>        Pre(T-&gt;rchild);<br>    }<br>}<br>&#x2F;&#x2F;中序遍历<br>void Mid(BiTree T)<br>{<br>    if(T)<br>    {<br>        printf(“%c”,T-&gt;data);<br>        Mid(T-&gt;lchild);<br>        Mid(T-&gt;rchild);<br>    }<br>}<br>&#x2F;&#x2F;后序遍历<br>void Back(BiTree T)<br>{<br>    if(T)<br>    {<br>        printf(“%c”,T-&gt;data);<br>        Back(T-&gt;lchild);<br>        Back(T-&gt;rchild);<br>    }<br>}<br>void level(BiTree T)<br>{<br>    &#x2F;&#x2F;用队列<br>    BiTree queue[1000],b;<br>    int beg&#x3D;0,end&#x3D;0;<br>    if(T)<br>    {<br>        queue[end++]&#x3D;T;<br>        while(beg!&#x3D;end)<br>        {<br>            b&#x3D;queue[beg++];<br>            printf(“%c”,b-&gt;data);<br>            if(b-&gt;lchild!&#x3D;NULL) queue[end++]&#x3D;b-&gt;lchild;<br>            if(b-&gt;rchild!&#x3D;NULL) queue[end++]&#x3D;b-&gt;rchild;<br>        }<br>    }<br>}<br>&#x2F;&#x2F;线索遍历：<br>&#x2F;&#x2F;1.以结点p为根的中序线索化<br>void MidThread(BiTree p)<br>{<br>    if(p)<br>    {<br>        MidThread(p-&gt;lchild);<br>        if(!p-&gt;lchild)<br>        {<br>            p-&gt;lchild&#x3D;pre;<br>            p-&gt;ltag&#x3D;1;<br>        }<br>        if(!pre-&gt;rchild)<br>        {<br>            pre-&gt;rchild&#x3D;p;<br>            pre-&gt;rtag&#x3D;1;<br>        }<br>        pre&#x3D;p;<br>        MidThread(p-&gt;rchild);<br>    }<br>}<br>&#x2F;&#x2F;将整个二叉树中序线索化<br>BINIDE</em>CreateMidThread(BiTree T)<br>{<br>    BINODE</em>head;<br>    head&#x3D;(BINODE</em>)malloc(szieof(BINODE));<br>    head-&gt;rtag&#x3D;1;  &#x2F;&#x2F;后继<br>    head-&gt;rchild&#x3D;head;   &#x2F;&#x2F;右孩子指向自己<br>    head-&gt;ltag&#x3D;0; &#x2F;&#x2F;有左孩子<br>    head-&gt;lchild&#x3D;T; &#x2F;&#x2F;头节点左孩子指向树根<br>    pre&#x3D;head;<br>    MidThread(t);<br>    pre-&gt;rtag&#x3D;1;<br>    pre-&gt;rchild&#x3D;head;<br>    head-&gt;rchild&#x3D;pre;<br>    return head;<br>}</p>
-<p>&#x2F;&#x2F;计算二叉树深度</p>
-<p>int Depth(BiTree T)</p>
-<p>{</p>
-<p>if(T&#x3D;&#x3D;NULL) return 0;</p>
-<p>int m,n;</p>
-<p>m&#x3D;Depth(T-&gt;lchild);</p>
-<p>n&#x3D;Depth(T-&gt;rchild);</p>
-<p>if(m&gt;n) return m+1;</p>
-<p>else return n+1;</p>
-<p>}</p>
-<p>int main()<br>{<br>    BiTree T&#x3D;NULL;<br>    return 0;<br>}</p>
+        <p><img src="/images/image30.png"></p>
+<p><img src="/images/image31.png"></p>
+<p><img src="/images/image32.png"></p>
+<p><img src="/images/image33.png"></p>
 
     </div>
     
